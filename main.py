@@ -73,7 +73,6 @@ def rating_count_greater_than_100(df):
     return df[df['rating_count'] > 100].sort_values(
         'Correlation', ascending=False).head()
 
-
 rating_count_greater_than_100(corr_casino_1995_count_df)
 rating_count_greater_than_100(corr_ace_ventura_when_nature_calls_1995_count_df)
 
@@ -82,6 +81,7 @@ corr_ace_ventura_when_nature_calls_1995_count_df = corr_ace_ventura_when_nature_
 
 print(corr_casino_1995_count_df)
 print(corr_ace_ventura_when_nature_calls_1995_count_df)
+
 
 # utilizing matplotlib to create graphs
 import matplotlib.pyplot as plt 
@@ -97,3 +97,13 @@ plt.title("Top 10 Popular Movies")
 plt.gca().invert_yaxis()
 plt.show() # produces bar graph
 
+# "Ace Ventura: When Nature Calls (1995)"
+plt.figure(figsize=(10, 4)) 
+plt.barh(corr_ace_ventura_when_nature_calls_1995_count_df['title'].head(10), 
+         abs(corr_ace_ventura_when_nature_calls_1995_count_df['Correlation'].head(10)),  
+         align='center', 
+         color='purple') 
+plt.xlabel("Popularity") 
+plt.title("Top 10 Popular Movies") 
+plt.gca().invert_yaxis()
+plt.show() # produces bar graph
