@@ -1,5 +1,4 @@
 import pandas as pd
-import matplotlib.pyplot as plt 
 
 movies_df = pd.read_csv('movies.csv')
 ratings_df = pd.read_csv('ratings.csv')
@@ -40,10 +39,12 @@ user_rating_pivot_table = movies_merge_df.pivot_table(
 
 #print(user_rating.head())
 
-# ratings for "Casino (1995)" submitted per user (user_id) 
+# ratings for movies submitted per user (user_id) 
 casino_1995_ratings_list_df = user_rating_pivot_table['Casino (1995)']
+ace_ventura_when_nature_calls_df = user_rating_pivot_table['Ace Ventura: When Nature Calls (1995)']
 
 print(casino_1995_ratings_list_df.head(15))
+
 
 # finding movies which correlate with "Casino (1995)"
 movies_like_casino_1995 = user_rating_pivot_table.corrwith(casino_1995_ratings_list_df)
@@ -56,6 +57,7 @@ print(corr_casino_1995_df.sort_values('Correlation',ascending=False).head(30))
 corr_casino_1995_count_df = \
     corr_casino_1995_df.join(ratings_mean_count_data_df['rating_count'])
 
+
 # defining a function that filters out the most correlated movies with ratings from more
 #   than 100 users
 def rating_count_greater_than_100(df):
@@ -65,17 +67,14 @@ def rating_count_greater_than_100(df):
 
 rating_count_greater_than_100(corr_casino_1995_count_df)
 
-'''
-corr_casino_1995_count_df[
-    corr_casino_1995_count_df['rating_count'] > 100].sort_values(
-        'Correlation', ascending=False).head()
-'''
-
 corr_casino_1995_count_df = corr_casino_1995_count_df.reset_index()
 
 print(corr_casino_1995_count_df)
 
-# creating a graph for "Casino (1995)"
+# utilizing matplotlib to create graphs
+import matplotlib.pyplot as plt 
+
+# "Casino (1995)"
 plt.figure(figsize=(10, 4)) 
 plt.barh(corr_casino_1995_count_df['title'].head(10), 
          abs(corr_casino_1995_count_df['Correlation'].head(10)),  
@@ -85,3 +84,4 @@ plt.xlabel("Popularity")
 plt.title("Top 10 Popular Movies") 
 plt.gca().invert_yaxis()
 plt.show() # produces bar graph
+
