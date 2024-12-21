@@ -41,9 +41,10 @@ user_rating_pivot_table = movies_merge_df.pivot_table(
 
 # ratings for movies submitted per user (user_id) 
 casino_1995_ratings_list_df = user_rating_pivot_table['Casino (1995)']
-ace_ventura_when_nature_calls_df = user_rating_pivot_table['Ace Ventura: When Nature Calls (1995)']
+ace_ventura_when_nature_calls_1995_ratings_list_df = user_rating_pivot_table['Ace Ventura: When Nature Calls (1995)']
 
 print(casino_1995_ratings_list_df.head(15))
+print(ace_ventura_when_nature_calls_1995_ratings_list_df.head(15))
 
 
 # finding movies which correlate with "Casino (1995)"
@@ -52,10 +53,18 @@ corr_casino_1995_df = pd.DataFrame(movies_like_casino_1995, columns=['Correlatio
 corr_casino_1995_df.head(30).dropna(inplace=True) # remove the n/a values from the dataframe
 print(corr_casino_1995_df.sort_values('Correlation',ascending=False).head(30))
 
+movies_like_ace_ventura_when_nature_calls_1995 = user_rating_pivot_table.corrwith(ace_ventura_when_nature_calls_1995_ratings_list_df)
+corr_ace_ventura_when_nature_calls_1995_df = pd.DataFrame(movies_like_casino_1995, columns=['Correlation']) # adding 'Correlation' column to dataframe
+corr_ace_ventura_when_nature_calls_1995_df.head(30).dropna(inplace=True) # remove the n/a values from the dataframe
+print(corr_ace_ventura_when_nature_calls_1995_df.sort_values('Correlation',ascending=False).head(30))
+
 # add a column of "rating_count" from ratings_mean_count_data_df 
-#   to the corr_casino_1995_df via a join
+#   to the correlation movie dataframe via a join
 corr_casino_1995_count_df = \
     corr_casino_1995_df.join(ratings_mean_count_data_df['rating_count'])
+
+corr_ace_ventura_when_nature_calls_1995_count_df = \
+    corr_ace_ventura_when_nature_calls_1995_df.join(ratings_mean_count_data_df['rating_count'])
 
 
 # defining a function that filters out the most correlated movies with ratings from more
@@ -66,10 +75,13 @@ def rating_count_greater_than_100(df):
 
 
 rating_count_greater_than_100(corr_casino_1995_count_df)
+rating_count_greater_than_100(corr_ace_ventura_when_nature_calls_1995_count_df)
 
 corr_casino_1995_count_df = corr_casino_1995_count_df.reset_index()
+corr_ace_ventura_when_nature_calls_1995_count_df = corr_ace_ventura_when_nature_calls_1995_count_df.reset_index()
 
 print(corr_casino_1995_count_df)
+print(corr_ace_ventura_when_nature_calls_1995_count_df)
 
 # utilizing matplotlib to create graphs
 import matplotlib.pyplot as plt 
