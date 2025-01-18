@@ -23,10 +23,24 @@ for cols in ratings_list:
 start_time = time.time()
 print('\nread movies.csv and ratings.csv -', time.time() - start_time)
 
+print(f'\nmovies_df:\n{movies_df}')
+
 # merge both movies_df and ratings_df based on movie_id column
-movies_merge_df = pd.merge(ratings_df, movies_df, on='movieId')
+movies_and_ratings_merged_df = pd.merge(ratings_df, movies_df, on='movieId')
 
-print(f'\n{movies_merge_df}')
+print(f'\nmovies_and_ratings_merged_df:\n{movies_and_ratings_merged_df}')
 
-print('\nratings_df and movies_df merge -', time.time() - start_time, '\n')
+print('\nratings_df and movies_df merged -', time.time() - start_time, '\n')
+
+print('movies_and_ratings_merged_df:\n',movies_and_ratings_merged_df, '\n')
+
+# calcuating average rating of all movies
+movie_ratings_averages = movies_and_ratings_merged_df.groupby('title')['rating'].mean().sort_values(ascending=False).head(30)
+
+print(f'\nmovie_ratings_averages:\n{movie_ratings_averages}')
+
+# how many times each movie has been rated
+movie_ratings_count = movies_and_ratings_merged_df.groupby('title')['rating'].count().sort_values(ascending=False).head(30)
+
+print(f'\nmovie_ratings_count:\n{movie_ratings_count}')
 
