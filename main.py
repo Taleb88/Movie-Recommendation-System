@@ -1,5 +1,7 @@
 import pandas as pd
 import time
+import matplotlib.pyplot as plt
+import seaborn as sns
 
 movies_df = pd.read_csv('movies.csv')
 ratings_df = pd.read_csv('ratings.csv')
@@ -52,3 +54,11 @@ num_of_ratings_per_movie_df = pd.DataFrame(movies_and_ratings_merged_df.groupby(
 num_of_ratings_per_movie_df['ratings_count'] = movies_and_ratings_merged_df.groupby('title')['rating'].count().sort_values(ascending=False)
 
 print(f'\nnum_of_ratings_per_movie:\n{num_of_ratings_per_movie_df.head(50)}')
+
+print('\nquanity of ratings per movie -', time.time() - start_time, '\n')
+
+# charts developed
+sns.set_style('white')
+plt.figure(figsize=(8, 2))
+num_of_ratings_per_movie_df['rating'].hist(bins= 50)
+plt.show()
