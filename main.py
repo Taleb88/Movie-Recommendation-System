@@ -32,15 +32,23 @@ print(f'\nmovies_and_ratings_merged_df:\n{movies_and_ratings_merged_df}')
 
 print('\nratings_df and movies_df merged -', time.time() - start_time, '\n')
 
-print('movies_and_ratings_merged_df:\n',movies_and_ratings_merged_df, '\n')
-
 # calcuating average rating of all movies
 movie_ratings_averages = movies_and_ratings_merged_df.groupby('title')['rating'].mean().sort_values(ascending=False).head(30)
 
 print(f'\nmovie_ratings_averages:\n{movie_ratings_averages}')
+
+print('\nrating averages per movie -', time.time() - start_time, '\n')
 
 # how many times each movie has been rated
 movie_ratings_count = movies_and_ratings_merged_df.groupby('title')['rating'].count().sort_values(ascending=False).head(30)
 
 print(f'\nmovie_ratings_count:\n{movie_ratings_count}')
 
+print('\nquanity of ratings per movie -', time.time() - start_time, '\n')
+
+# new dataframe countaining number of ratings per movie
+num_of_ratings_per_movie_df = pd.DataFrame(movies_and_ratings_merged_df.groupby('title')['rating'].mean())
+
+num_of_ratings_per_movie_df['ratings_count'] = movies_and_ratings_merged_df.groupby('title')['rating'].count().sort_values(ascending=False)
+
+print(f'\nnum_of_ratings_per_movie:\n{num_of_ratings_per_movie_df.head(50)}')
