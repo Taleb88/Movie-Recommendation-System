@@ -60,12 +60,7 @@ print('\nquanity of ratings per movie -', time.time() - start_time, '\n')
 # charts developed
 sns.set_style('white')
 plt.figure(figsize=(8, 2))
-num_of_ratings_per_movie_df['rating'].hist(bins=50)
+num_of_ratings_per_movie_df['rating'].hist(bins=70)
 plt.show()
 
-sns.set_style('white')
-plt.figure(figsize=(8, 2))
-num_of_ratings_per_movie_df['ratings_count'].hist(bins=50)
-plt.show()
-
-print('\ncharts developed -', time.time() - start_time, '\n')
+print('charts developed -', time.time() - start_time, '\n')
