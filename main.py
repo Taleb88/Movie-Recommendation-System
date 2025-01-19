@@ -81,27 +81,28 @@ print(ratings_pivot_table)
 
 print('ratings pivot table developed -', time.time() - start_time, '\n')'''
 
-movie_titles_values = list(movies_and_ratings_merged_df['title'].values)
+movie_ratings_values = list(movies_and_ratings_merged_df['rating'].values)
 movie_genres_values = list(movies_and_ratings_merged_df['genres'].values)
 
 while True:
     try: 
-        answer = input('please put in a name of a title and genre:\n')
-
-        if answer == 'exit':
+        movie_genres_answer = input('please put in a name of a genre:\n')        
+        movie_ratings_answer = input('please put in a name of a rating:\n')
+        
+        if movie_genres_answer == 'exit' or movie_ratings_answer == -1:
             break
 
-        if (answer in movie_titles_values) and (answer in movie_genres_values):
-            print(f'{movies_and_ratings_merged_df[(movies_and_ratings_merged_df['title']==answer) 
-                                                  & ((movies_and_ratings_merged_df['genres']==answer))]}')
-        elif answer.isnumeric():
+        if (movie_genres_answer in movie_genres_values) or (movie_ratings_answer in movie_ratings_values):
+            print(f'{movies_and_ratings_merged_df[(movies_and_ratings_merged_df['genres']==movie_genres_answer) 
+                                                  | (movies_and_ratings_merged_df['rating']==movie_ratings_answer)]}')
+        elif movie_genres_answer.isnumeric():
             print('please enter a string value only')
-        elif answer not in movie_titles_values:
+        elif not movie_ratings_answer.isnumeric():
+            print('please enter a numerical value only')
+        elif (movie_ratings_answer not in movie_ratings_values) or (movie_genres_answer not in movie_genres_values):
             print('title does not exist')
     except ValueError:
         print('please enter a valid title')
         continue
 
 print('user input feature developed -', time.time() - start_time, '\n')
-
-
