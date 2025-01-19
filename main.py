@@ -72,12 +72,32 @@ plt.show()
 
 print('charts developed -', time.time() - start_time, '\n')
 
-ratings_pivot_table = pd.pivot_table(movies_and_ratings_merged_df,
+'''ratings_pivot_table = pd.pivot_table(movies_and_ratings_merged_df,
                                      values='rating',
                                      index='userId',
                                      columns='title')
 
 print(ratings_pivot_table)
 
-print('ratings pivot table developed -', time.time() - start_time, '\n')
+print('ratings pivot table developed -', time.time() - start_time, '\n')'''
 
+movie_titles_values = list(movies_and_ratings_merged_df['title'].values)
+
+while True:
+    try: 
+        answer = input('please put in a name of a title:\n')
+
+        if answer == 'exit':
+            break
+
+        if answer in movie_titles_values:
+            print(f'{movies_and_ratings_merged_df[(movies_and_ratings_merged_df['title']==answer)]}')
+        elif answer.isnumeric():
+            print('please enter a string value only')
+        elif answer not in movie_titles_values:
+            print('title does not exist')
+    except ValueError:
+        print('please enter a valid title')
+        continue
+
+print('user input feature developed -', time.time() - start_time, '\n')
