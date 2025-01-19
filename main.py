@@ -82,16 +82,18 @@ print(ratings_pivot_table)
 print('ratings pivot table developed -', time.time() - start_time, '\n')'''
 
 movie_titles_values = list(movies_and_ratings_merged_df['title'].values)
+movie_genres_values = list(movies_and_ratings_merged_df['genres'].values)
 
 while True:
     try: 
-        answer = input('please put in a name of a title:\n')
+        answer = input('please put in a name of a title and genre:\n')
 
         if answer == 'exit':
             break
 
-        if answer in movie_titles_values:
-            print(f'{movies_and_ratings_merged_df[(movies_and_ratings_merged_df['title']==answer)]}')
+        if (answer in movie_titles_values) and (answer in movie_genres_values):
+            print(f'{movies_and_ratings_merged_df[(movies_and_ratings_merged_df['title']==answer) 
+                                                  & ((movies_and_ratings_merged_df['genres']==answer))]}')
         elif answer.isnumeric():
             print('please enter a string value only')
         elif answer not in movie_titles_values:
@@ -101,3 +103,5 @@ while True:
         continue
 
 print('user input feature developed -', time.time() - start_time, '\n')
+
+
