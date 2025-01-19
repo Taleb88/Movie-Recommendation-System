@@ -72,3 +72,12 @@ plt.show()
 
 print('charts developed -', time.time() - start_time, '\n')
 
+ratings_pivot_table = pd.pivot_table(movies_and_ratings_merged_df,
+                                     values='rating',
+                                     index='userId',
+                                     columns='title')
+
+print(ratings_pivot_table)
+
+print('ratings pivot table developed -', time.time() - start_time, '\n')
+
