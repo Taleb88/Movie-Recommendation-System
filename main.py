@@ -63,4 +63,12 @@ plt.figure(figsize=(8, 2))
 num_of_ratings_per_movie_df['rating'].hist(bins=70)
 plt.show()
 
+sns.jointplot(x=num_of_ratings_per_movie_df['rating'],
+              y=num_of_ratings_per_movie_df['ratings_count'],
+              data=num_of_ratings_per_movie_df,
+              color='red',
+              height=15)
+plt.show()
+
 print('charts developed -', time.time() - start_time, '\n')
+
