@@ -107,34 +107,34 @@ while True:
                                                   (movies_and_ratings_merged_df['rating']==movie_ratings_answer)]}')
         elif (movie_genres_answer in movie_genres_values) and (movie_ratings_answer >= 4.5 in movie_ratings_values):
             print(f'{movies_and_ratings_merged_df[(movies_and_ratings_merged_df['genres']==movie_genres_answer) & \
-                                                  ((movies_and_ratings_merged_df['rating'] >= movie_ratings_answer) & (movies_and_ratings_merged_df['rating'] <= 4.99))]}')
+                                                  ((movies_and_ratings_merged_df['rating'] >= 4.5) & (movies_and_ratings_merged_df['rating'] <= 4.99))]}')
         elif (movie_genres_answer in movie_genres_values) and (movie_ratings_answer >= 4.0 in movie_ratings_values and movie_ratings_answer <= 4.49):
             print(f'{movies_and_ratings_merged_df[(movies_and_ratings_merged_df['genres']==movie_genres_answer) & \
-                                                  ((movies_and_ratings_merged_df['rating'] >= movie_ratings_answer) & (movies_and_ratings_merged_df['rating'] <= 4.49))]}')
+                                                  ((movies_and_ratings_merged_df['rating'] >= 4.0) & (movies_and_ratings_merged_df['rating'] <= 4.49))]}')
         elif (movie_genres_answer in movie_genres_values) and (movie_ratings_answer >= 3.5 in movie_ratings_values and movie_ratings_answer <= 3.99):
             print(f'{movies_and_ratings_merged_df[(movies_and_ratings_merged_df['genres']==movie_genres_answer) & \
-                                                  ((movies_and_ratings_merged_df['rating'] >= movie_ratings_answer) & (movies_and_ratings_merged_df['rating'] <= 3.99))]}')
+                                                  ((movies_and_ratings_merged_df['rating'] >= 3.5) & (movies_and_ratings_merged_df['rating'] <= 3.99))]}')
         elif (movie_genres_answer in movie_genres_values) and (movie_ratings_answer >= 3.0 in movie_ratings_values and movie_ratings_answer <= 3.49):
             print(f'{movies_and_ratings_merged_df[(movies_and_ratings_merged_df['genres']==movie_genres_answer) & \
-                                                  ((movies_and_ratings_merged_df['rating'] >= movie_ratings_answer) & (movies_and_ratings_merged_df['rating'] <= 3.49))]}')   
+                                                  ((movies_and_ratings_merged_df['rating'] >= 3.0) & (movies_and_ratings_merged_df['rating'] <= 3.49))]}')   
         elif (movie_genres_answer in movie_genres_values) and (movie_ratings_answer >= 2.5 in movie_ratings_values and movie_ratings_answer <= 2.99):
             print(f'{movies_and_ratings_merged_df[(movies_and_ratings_merged_df['genres']==movie_genres_answer) & \
-                                                  ((movies_and_ratings_merged_df['rating'] >= movie_ratings_answer) & (movies_and_ratings_merged_df['rating'] <= 2.99))]}')    
+                                                  ((movies_and_ratings_merged_df['rating'] >= 2.5) & (movies_and_ratings_merged_df['rating'] <= 2.99))]}')    
         elif (movie_genres_answer in movie_genres_values) and (movie_ratings_answer >= 2.0 in movie_ratings_values and movie_ratings_answer <= 2.49):
             print(f'{movies_and_ratings_merged_df[(movies_and_ratings_merged_df['genres']==movie_genres_answer) & \
-                                                  ((movies_and_ratings_merged_df['rating'] >= movie_ratings_answer) & (movies_and_ratings_merged_df['rating'] <= 2.49))]}')
+                                                  ((movies_and_ratings_merged_df['rating'] >= 2.0) & (movies_and_ratings_merged_df['rating'] <= 2.49))]}')
         elif (movie_genres_answer in movie_genres_values) and (movie_ratings_answer >= 1.5 in movie_ratings_values and movie_ratings_answer <= 1.99):
             print(f'{movies_and_ratings_merged_df[(movies_and_ratings_merged_df['genres']==movie_genres_answer) & \
-                                                  ((movies_and_ratings_merged_df['rating'] >= movie_ratings_answer) & (movies_and_ratings_merged_df['rating'] <= 1.99))]}')
+                                                  ((movies_and_ratings_merged_df['rating'] >= 1.5) & (movies_and_ratings_merged_df['rating'] <= 1.99))]}')
         elif (movie_genres_answer in movie_genres_values) and (movie_ratings_answer >= 1.0 in movie_ratings_values and movie_ratings_answer <= 1.49):
             print(f'{movies_and_ratings_merged_df[(movies_and_ratings_merged_df['genres']==movie_genres_answer) & \
-                                                  ((movies_and_ratings_merged_df['rating'] >= movie_ratings_answer) & (movies_and_ratings_merged_df['rating'] <= 1.49))]}')
+                                                  ((movies_and_ratings_merged_df['rating'] >= 1.0) & (movies_and_ratings_merged_df['rating'] <= 1.49))]}')
         elif (movie_genres_answer in movie_genres_values) and (movie_ratings_answer >= 0.5 in movie_ratings_values and movie_ratings_answer <= 0.99):
             print(f'{movies_and_ratings_merged_df[(movies_and_ratings_merged_df['genres']==movie_genres_answer) & \
-                                                  ((movies_and_ratings_merged_df['rating'] >= movie_ratings_answer) & (movies_and_ratings_merged_df['rating'] <= 0.99))]}')    
+                                                  ((movies_and_ratings_merged_df['rating'] >= 0.5) & (movies_and_ratings_merged_df['rating'] <= 0.99))]}')    
         elif (movie_genres_answer in movie_genres_values) and (movie_ratings_answer >= 0.0 in movie_ratings_values and movie_ratings_answer <= 0.49):
             print(f'{movies_and_ratings_merged_df[(movies_and_ratings_merged_df['genres']==movie_genres_answer) & \
-                                                  ((movies_and_ratings_merged_df['rating'] >= movie_ratings_answer) & (movies_and_ratings_merged_df['rating'] <= 0.49))]}')                                                                                        
+                                                  ((movies_and_ratings_merged_df['rating'] >= 0.0) & (movies_and_ratings_merged_df['rating'] <= 0.49))]}')                                                                                        
         elif movie_genres_answer.isnumeric():
             print('please enter a string value only')
         elif (movie_ratings_answer not in movie_ratings_values) and (movie_genres_answer not in movie_genres_values):
